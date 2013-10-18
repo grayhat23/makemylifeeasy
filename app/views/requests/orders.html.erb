@@ -1,0 +1,47 @@
+<section class="span9">
+  <header class="row-fluid sectionHeader">
+    <div class="span6">
+      <p class="backlinks">&nbsp;</p>
+      <h2> Orders </h2>
+    </div>
+  </header>
+  <div class="content">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th>Customer</th>
+      <th>Service type</th>
+      <th>Service</th>
+      <th>Resource</th>
+      <th>Charge</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @requests.each do |request| %>
+      <tr>
+        <td><%= request.Status %></td>
+        <td><%= request.customer.user.name %></td>
+        <td><%= request.service_type.name %></td>
+        <td><%= request.service.name %></td>
+        <td>
+        <% if(!request.resource.nil?) %>
+        <%= request.resource.name %>
+        <% end %>
+        </td>
+        <td><%= request.charge %></td>
+        <td>
+          <% if(request.status = 1) %>
+          <%= link_to 'Assign', assign_path(request), :remote => true %>
+          <%= link_to 'Reject', reject_path(request), :remote => true %>
+          <% end %>
+        </td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+</section>

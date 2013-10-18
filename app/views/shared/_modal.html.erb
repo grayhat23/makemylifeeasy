@@ -3,7 +3,6 @@
    @pathToReturn = request.fullpath
 %>
 
-<!--
 <div class="popupHolder" id = "modal">
     <header class="popup-header row-fluid">
       <div class="closeBtn"><a href="<%= @pathToReturn %>">X</a></div>
@@ -15,7 +14,12 @@
     <section  id="modal-body" class="popup-content">
     </section>
     <footer class="popup-footer">
+      <%= link_to @pathToReturn , :class=>"btnGray" do %>
+          <%= image_tag('/images/spacer.gif', :class =>"icon_delete") %> Cancel
+      <% end %>
+      <%= link_to :class=>"btnGreen", :onclick=> "$('form').submit()" do %>
+          <%= image_tag('/images/spacer.gif', :class =>"icon_tick") %> Done
+      <% end %>
      </footer>
 </div>
 <div id="modal-container" />
--->

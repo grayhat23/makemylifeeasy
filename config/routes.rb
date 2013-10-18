@@ -5,9 +5,14 @@ Makemylifeeasy::Application.routes.draw do
 
   resources :request_schedules
 
-  resources :requests
+  get 'orders' => 'requests#orders'
 
-  resources :services
+  get 'orders/:id/assign' => 'requests#assign', as: :assign
+  get 'orders/:id/reject' => 'requests#reject', as: :reject
+
+  patch 'orders/:id/statusupdate' => 'requests#statusupdate', as: :statusupdate
+
+  resources :requests
 
   resources :resource_services
 
