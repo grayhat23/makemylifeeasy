@@ -14,6 +14,8 @@ Makemylifeeasy::Application.routes.draw do
 
   resources :requests
 
+  resources :services
+
   resources :resource_services
 
   resources :resources
