@@ -1,0 +1,31 @@
+<h1>Listing resources</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>R type</th>
+      <th>Average rating</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @resources.each do |resource| %>
+      <tr>
+        <td><%= resource.user %></td>
+        <td><%= resource.r_type %></td>
+        <td><%= resource.average_rating %></td>
+        <td><%= link_to 'Show', resource %></td>
+        <td><%= link_to 'Edit', edit_resource_path(resource) %></td>
+        <td><%= link_to 'Destroy', resource, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Resource', new_resource_path %>

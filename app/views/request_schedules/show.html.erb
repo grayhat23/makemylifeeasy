@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Request:</strong>
+  <%= @request_schedule.request %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @request_schedule.start_time %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @request_schedule.end_date %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @request_schedule.phone_number %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @request_schedule.address %>
+</p>
+
+<p>
+  <strong>S type:</strong>
+  <%= @request_schedule.s_type %>
+</p>
+
+<%= link_to 'Edit', edit_request_schedule_path(@request_schedule) %> |
+<%= link_to 'Back', request_schedules_path %>

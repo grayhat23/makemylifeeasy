@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Resource:</strong>
+  <%= @resource_rating.resource %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @resource_rating.rating %>
+</p>
+
+<p>
+  <strong>Request:</strong>
+  <%= @resource_rating.request %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @resource_rating.customer %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @resource_rating.comments %>
+</p>
+
+<%= link_to 'Edit', edit_resource_rating_path(@resource_rating) %> |
+<%= link_to 'Back', resource_ratings_path %>

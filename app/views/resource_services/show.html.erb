@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Resource:</strong>
+  <%= @resource_service.resource %>
+</p>
+
+<p>
+  <strong>Service type:</strong>
+  <%= @resource_service.service_type %>
+</p>
+
+<p>
+  <strong>Service:</strong>
+  <%= @resource_service.service %>
+</p>
+
+<%= link_to 'Edit', edit_resource_service_path(@resource_service) %> |
+<%= link_to 'Back', resource_services_path %>

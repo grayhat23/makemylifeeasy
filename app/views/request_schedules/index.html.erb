@@ -1,0 +1,37 @@
+<h1>Listing request_schedules</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Request</th>
+      <th>Start time</th>
+      <th>End date</th>
+      <th>Phone number</th>
+      <th>Address</th>
+      <th>S type</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @request_schedules.each do |request_schedule| %>
+      <tr>
+        <td><%= request_schedule.request %></td>
+        <td><%= request_schedule.start_time %></td>
+        <td><%= request_schedule.end_date %></td>
+        <td><%= request_schedule.phone_number %></td>
+        <td><%= request_schedule.address %></td>
+        <td><%= request_schedule.s_type %></td>
+        <td><%= link_to 'Show', request_schedule %></td>
+        <td><%= link_to 'Edit', edit_request_schedule_path(request_schedule) %></td>
+        <td><%= link_to 'Destroy', request_schedule, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Request schedule', new_request_schedule_path %>

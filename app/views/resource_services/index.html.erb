@@ -1,0 +1,31 @@
+<h1>Listing resource_services</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Resource</th>
+      <th>Service type</th>
+      <th>Service</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @resource_services.each do |resource_service| %>
+      <tr>
+        <td><%= resource_service.resource %></td>
+        <td><%= resource_service.service_type %></td>
+        <td><%= resource_service.service %></td>
+        <td><%= link_to 'Show', resource_service %></td>
+        <td><%= link_to 'Edit', edit_resource_service_path(resource_service) %></td>
+        <td><%= link_to 'Destroy', resource_service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Resource service', new_resource_service_path %>

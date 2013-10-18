@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Request:</strong>
+  <%= @request_history.request %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @request_history.comments %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @request_history.status %>
+</p>
+
+<%= link_to 'Edit', edit_request_history_path(@request_history) %> |
+<%= link_to 'Back', request_histories_path %>

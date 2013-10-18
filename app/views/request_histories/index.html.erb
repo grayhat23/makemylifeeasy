@@ -1,0 +1,31 @@
+<h1>Listing request_histories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Request</th>
+      <th>Comments</th>
+      <th>Status</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @request_histories.each do |request_history| %>
+      <tr>
+        <td><%= request_history.request %></td>
+        <td><%= request_history.comments %></td>
+        <td><%= request_history.status %></td>
+        <td><%= link_to 'Show', request_history %></td>
+        <td><%= link_to 'Edit', edit_request_history_path(request_history) %></td>
+        <td><%= link_to 'Destroy', request_history, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Request history', new_request_history_path %>

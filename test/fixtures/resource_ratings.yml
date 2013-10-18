@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  resource_id: 
+  rating: 1
+  request_id: 
+  customer_id: 
+  comments: MyString
+
+two:
+  resource_id: 
+  rating: 1
+  request_id: 
+  customer_id: 
+  comments: MyString

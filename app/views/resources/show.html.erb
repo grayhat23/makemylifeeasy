@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @resource.user %>
+</p>
+
+<p>
+  <strong>R type:</strong>
+  <%= @resource.r_type %>
+</p>
+
+<p>
+  <strong>Average rating:</strong>
+  <%= @resource.average_rating %>
+</p>
+
+<%= link_to 'Edit', edit_resource_path(@resource) %> |
+<%= link_to 'Back', resources_path %>

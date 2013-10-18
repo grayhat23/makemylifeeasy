@@ -1,0 +1,35 @@
+<h1>Listing resource_ratings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Resource</th>
+      <th>Rating</th>
+      <th>Request</th>
+      <th>Customer</th>
+      <th>Comments</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @resource_ratings.each do |resource_rating| %>
+      <tr>
+        <td><%= resource_rating.resource %></td>
+        <td><%= resource_rating.rating %></td>
+        <td><%= resource_rating.request %></td>
+        <td><%= resource_rating.customer %></td>
+        <td><%= resource_rating.comments %></td>
+        <td><%= link_to 'Show', resource_rating %></td>
+        <td><%= link_to 'Edit', edit_resource_rating_path(resource_rating) %></td>
+        <td><%= link_to 'Destroy', resource_rating, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Resource rating', new_resource_rating_path %>

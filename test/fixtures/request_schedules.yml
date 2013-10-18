@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  request_id: 
+  start_time: 2013-10-18 14:57:28
+  end_date: 2013-10-18 14:57:28
+  phone_number: MyString
+  address: MyString
+  s_type: 1
+
+two:
+  request_id: 
+  start_time: 2013-10-18 14:57:28
+  end_date: 2013-10-18 14:57:28
+  phone_number: MyString
+  address: MyString
+  s_type: 1
