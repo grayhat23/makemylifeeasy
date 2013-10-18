@@ -9,8 +9,11 @@ Makemylifeeasy::Application.routes.draw do
 
   get 'orders/:id/assign' => 'requests#assign', as: :assign
   get 'orders/:id/reject' => 'requests#reject', as: :reject
+  get 'orders/:id/:st/service' => 'requests#service', as: :service
 
   patch 'orders/:id/statusupdate' => 'requests#statusupdate', as: :statusupdate
+
+  get 'requests/:st_id/:s_id/new' => 'requests#new', as: :requests_new
 
   resources :requests
 

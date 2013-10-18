@@ -33,10 +33,37 @@
         </td>
         <td><%= request.charge %></td>
         <td>
-          <% if(request.status = 1) %>
+          <% if(request.status == ApplicationHelper::RequestStatus::New) %>
           <%= link_to 'Assign', assign_path(request), :remote => true %>
           <%= link_to 'Reject', reject_path(request), :remote => true %>
+          <% elsif (request.status == ApplicationHelper::RequestStatus::Assigned) %>
+              <% if (request.service_type.s_type == ApplicationHelper::ServiceCategory::PickupDelivery) %>
+                   <%= link_to 'Pick up', service_path(request, ApplicationHelper::RequestStatus::PickedUp), :remote => true %>
+              <% elsif (request.service_type.s_type == ApplicationHelper::ServiceCategory::PickupServiceDelivery) %>
+                   <%= link_to 'Pick up', service_path(request, ApplicationHelper::RequestStatus::PickedUp), :remote => true %>
+              <% elsif (request.service_type.s_type == ApplicationHelper::ServiceCategory::Service) %>
+                  <%= link_to 'Service', service_path(request, ApplicationHelper::RequestStatus::Serviced), :remote => true %>
+              <% end %>
+          <% elsif (request.status == ApplicationHelper::RequestStatus::Serviced) %>
+              <% if (request.service_type.s_type == ApplicationHelper::ServiceCategory::PickupServiceDelivery) %>
+                <%= link_to 'Service', service_path(request, ApplicationHelper::RequestStatus::Serviced), :remote => true %>
+              <% elsif (request.service_type.s_type == ApplicationHelper::ServiceCategory::PickupDelivery) %>
+                  <%= link_to 'Delivery', service_path(request, ApplicationHelper::RequestStatus::Delivered), :remote => true %>
+              <% end %>
+          <% elsif (request.status == ApplicationHelper::RequestStatus::Serviced) %>
+              <% if (request.service_type.s_type == ApplicationHelper::ServiceCategory::PickupServiceDelivery) %>
+                  <%= link_to 'Delivery', service_path(request, ApplicationHelper::RequestStatus::Delivered), :remote => true %>
+              <% elsif (request.service_type.s_type == ApplicationHelper::ServiceCategory::Service) %>
+                  <%= link_to 'Close', service_path(request, ApplicationHelper::RequestStatus::Closed), :remote => true %>
+              <% end %>
+          <% elsif (request.status == 5) %>
+              <% if (request.service_type.s_type == ApplicationHelper::ServiceCategory::PickupServiceDelivery) %>
+                  <%= link_to 'Close', service_path(request, ApplicationHelper::RequestStatus::Closed), :remote => true %>
+              <% elsif (request.service_type.s_type == ApplicationHelper::ServiceCategory::PickupDelivery) %>
+                  <%= link_to 'Close', service_path(request, ApplicationHelper::RequestStatus::Closed), :remote => true %>
+              <% end %>
           <% end %>
+
         </td>
 
       </tr>

@@ -9,6 +9,7 @@ module ApplicationHelper
     Delivered = 5
     Closed = 6
     Cancelled = 7
+    Rejected = 8
 
     def self.RequestStatuses
       return [["New", 1], ["Assigned", 2], ["Picked Up", 3], ["Serviced", 4], ["Delivered", 5], ["Closed", 6], ["Cancelled", 7]]

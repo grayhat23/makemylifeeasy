@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  before_action :set_request, only: [:show, :edit, :update, :destroy, :assign, :statusupdate]
+  before_action :set_request, only: [:show, :edit, :update, :destroy, :assign, :reject, :service, :statusupdate]
   before_action :load_arrays
   include ApplicationHelper
 
@@ -10,7 +10,7 @@ class RequestsController < ApplicationController
   end
 
   def orders
-    @requests = Request.find_all_by_status(RequestStatus::New)
+    @requests = Request.find_all_by_status( [RequestStatus::New, RequestStatus::Assigned, RequestStatus::PickedUp, RequestStatus::Delivered, RequestStatus::Serviced] )
   end
 
   # GET /requests/1
@@ -27,7 +27,13 @@ class RequestsController < ApplicationController
   end
 
   def assign
+  end
 
+  def reject
+  end
+
+  def service
+    @status = params[:st]
   end
 
 
