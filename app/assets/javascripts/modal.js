@@ -81,8 +81,8 @@
         that.$element.find('.modal-dialog') // wait for modal to slide in
           .one($.support.transition.end, function () {
             that.$element.focus().trigger(e)
-          })
-          .emulateTransitionEnd(300) :
+          }):
+          //.emulateTransitionEnd(300) :
         that.$element.focus().trigger(e)
     })
   }
@@ -109,8 +109,8 @@
 
     $.support.transition && this.$element.hasClass('fade') ?
       this.$element
-        .one($.support.transition.end, $.proxy(this.hideModal, this))
-        .emulateTransitionEnd(300) :
+        .one($.support.transition.end, $.proxy(this.hideModal, this)) :
+        //.emulateTransitionEnd(300) :
       this.hideModal()
   }
 
@@ -173,8 +173,8 @@
 
       doAnimate ?
         this.$backdrop
-          .one($.support.transition.end, callback)
-          .emulateTransitionEnd(150) :
+          .one($.support.transition.end, callback)   :
+          // .emulateTransitionEnd(150) :
         callback()
 
     } else if (!this.isShown && this.$backdrop) {
@@ -182,8 +182,8 @@
 
       $.support.transition && this.$element.hasClass('fade')?
         this.$backdrop
-          .one($.support.transition.end, callback)
-          .emulateTransitionEnd(150) :
+          .one($.support.transition.end, callback)      :
+          //.emulateTransitionEnd(150) :
         callback()
 
     } else if (callback) {

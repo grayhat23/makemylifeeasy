@@ -1,57 +1,58 @@
 <h1>Listing Of Services</h1>
 
 <!-- Main Area -->
-<div id="main_area">
+<div id="main_area" style="margin-left: 50px; !important">
 
   <!--  <div class="span4" id="carousel-chosen-service-text">-->
-</div>
-<!-- Slider -->
-<table>
-  <thead>
-  </thead>
+  <!-- Slider -->
+  <table>
+    <thead>
+    </thead>
 
-  <tbody>
-  <% @service_types.each do |service_type| %>
-      <tr>
-        <div class="row">
-          <div class="span12" id="slider">
-            <!-- Top part of the slider -->
-            <div class="row">
-              <div class="span4" id="carousel-text-<%= service_type.name %>">
-                <h2><%= service_type.name %></h2>
+    <tbody>
+    <% @service_types.each do |service_type| %>
+        <tr>
+          <div class="row">
+            <div class="span12" id="slider">
+              <!-- Top part of the slider -->
+              <div class="row">
+                <div class="span4" id="carousel-text-<%= service_type.name %>">
+                  <h2><%= service_type.name %></h2>
+                </div>
+
+
+                <div style="display: none;" id="slide-content">
+                  <% @serviceMap[service_type.name].each do |service| %>
+                      <div id="slide-content-<%= service.name %>">
+                        <h2><%= service.name %></h2>
+                      </div>
+                  <% end %>
+                </div>
               </div>
 
-
-              <div style="display: none;" id="slide-content">
-                <% @serviceMap[service_type.name].each do |service| %>
-                    <div id="slide-content-<%= service.name %>">
-                      <h2><%= service.name %></h2>
-                    </div>
-                <% end %>
-              </div>
             </div>
+          </div> <!--/Slider-->
 
-          </div>
-        </div> <!--/Slider-->
+          <div class="row hidden-phone" id="slider-thumbs">
+            <div class="span12">
+              <!-- Bottom switcher of slider -->
+              <ul class="thumbnails">
+                <% @serviceMap[service_type.name].each do |service| %>
+                    <li class="span2">
+                      <a  id="carousel-selector-<%= service.name %>">
 
-        <div class="row hidden-phone" id="slider-thumbs">
-          <div class="span12">
-            <!-- Bottom switcher of slider -->
-            <ul class="thumbnails">
-              <% @serviceMap[service_type.name].each do |service| %>
-                  <li class="span2">
-                    <a class="thumbnail" id="carousel-selector-<%= service.name %>">
-                      <img src="http://placehold.it/170x100&text=<%= service.name %>" />
-                    </a>
-                  </li>
-              <% end %>
-            </ul>
+                        <img style="width: 100px !important; height: 100px !important;" src="<%= service.image_url %>" />
+                        <div><%= service.name %></div>
+                      </a>
+                    </li>
+                <% end %>
+              </ul>
+            </div>
           </div>
-        </div>
-      </tr>
-  <% end %>
-  </tbody>
-</table>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
 
 </div>
 
@@ -106,6 +107,7 @@
       <% end %>
     </div>
   </div>
+</div>
 </div>
 
 

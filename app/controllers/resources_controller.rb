@@ -1,5 +1,6 @@
 class ResourcesController < ApplicationController
   before_action :set_resource, only: [:show, :edit, :update, :destroy]
+  before_action :load_data
 
   # GET /resources
   # GET /resources.json
@@ -19,22 +20,12 @@ class ResourcesController < ApplicationController
     @user = User.new
     @resource = Resource.new
 
-    @grouped_options = {}
-
-    @servicetypes = ServiceType.all
-    @servicetypes.each do |j|
-    @group = []
-      @services = Service.where(:service_type_id => j.id)
-      @services.each do |i|
-        @group.push(i.name);
-      end
-    @grouped_options[j.name] = @group
-    end
 
   end
 
   # GET /resources/1/edit
   def edit
+    @user = @resource.user
   end
 
   # POST /resources
@@ -129,6 +120,21 @@ class ResourcesController < ApplicationController
     def set_resource
       @resource = Resource.find(params[:id])
     end
+
+  def load_data
+
+    @grouped_options = {}
+
+    @servicetypes = ServiceType.all
+    @servicetypes.each do |j|
+      @group = []
+      @services = Service.where(:service_type_id => j.id)
+      @services.each do |i|
+        @group.push(i.name);
+      end
+      @grouped_options[j.name] = @group
+    end
+  end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def resource_params

@@ -5,7 +5,7 @@ a:hover{ text-decoration:none}
 .container{ width:98%}
 
 .header{ border-bottom:1px solid #ccc; padding:0 0 10px}
-.userDetails{ margin-top:10px}
+.userDetails{ margin-top:10px; color: white !important; float: left; }
 
 /* Search Bar */
 .input-append{ display:inline-block}
@@ -130,7 +130,7 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 
 /* Icons */
 .icon_edit,.icon_delete,.icon_add,.icon_back,.icon_tick,.icon_calendar,.icon_district,.icon_block,.icon_village,.icon_users,.icon_donors,.icon_partners,.icon_importExport{ width:16px; height:16px; margin-right:2px; background:#ccc; vertical-align:middle}
-.icon_edit,.icon_delete,icon_add,.icon_back,.icon_add,.icon_calendar,.icon_tick{ background:url(/images/sprite-16x16.png) no-repeat -9999px -9999px transparent}
+.icon_edit,.icon_delete,.icon_add,.icon_back,.icon_add,.icon_calendar,.icon_tick{ background:url(/images/sprite-16x16.png) no-repeat -9999px -9999px transparent}
 .icon_edit{ background-position:0 0}
 .icon_delete{ background-position:0 -32px}
 .icon_add{ background-position:0 -16px}

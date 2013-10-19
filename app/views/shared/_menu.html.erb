@@ -13,16 +13,19 @@
           <li class="divider-vertical"></li>
           <li class="active"><a href="<%= service_types_path %>"><i class="icon-file icon-white"></i> Services </a></li>
           <li class="divider-vertical"></li>
-           <% if current_user.role == "1" %>
-          <li><a href="<%= orders_path%>"><i class="icon-envelope icon-white"></i> My Orders </a></li>
+           <% if current_user.role == ApplicationHelper::Role::Customer %>
+          <li><a href="<%= requests_path %>"><i class="icon-envelope icon-white"></i> My Orders </a></li>
           <li class="divider-vertical"></li>
           <% else %>
-          <li><a href=""<%= orders_path%>""><i class="icon-signal icon-white"></i> View Orders </a></li>
+          <li><a href="<%= resources_path%>"><i class="icon-user icon-white"></i> Resources </a></li>
+          <li class="divider-vertical"></li>
+          <li><a href="<%= orders_path%>"><i class="icon-signal icon-white"></i> View Orders </a></li>
           <li class="divider-vertical"></li>
           <% end %>
         </ul>
         <div class="btn-group pull-right">
-          <div><%= current_user.name %></div>
+          <div class="userDetails" style=" ">
+            <%= current_user.name %></div>
           <%= link_to('Logout', destroy_user_session_path, :method => :delete, :class => "btn") %>
         </div>
       </div>

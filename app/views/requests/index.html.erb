@@ -1,37 +1,45 @@
-<h1>Listing requests</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Status</th>
-      <th>Customer</th>
-      <th>Service type</th>
-      <th>Service</th>
-      <th>Resource</th>
-      <th>Charge</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<section class="span9">
+  <header class="row-fluid sectionHeader">
+    <div class="span6">
+      <p class="backlinks">&nbsp;</p>
+      <h2> Orders </h2>
+    </div>
+  </header>
+  <div class="content">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-hover table-striped">
+      <thead>
+      <tr>
+        <th>Status</th>
+        <th>Title</th>
+        <th>Service type</th>
+        <th>Service</th>
+        <th>Charge</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
 
   <tbody>
     <% @requests.each do |request| %>
       <tr>
-        <td><%= request.status %></td>
-        <td><%= request.customer %></td>
-        <td><%= request.service_type %></td>
-        <td><%= request.service %></td>
-        <td><%= request.resource %></td>
+        <td><%= request.Status %></td>
+        <td><%= request.title %></td>
+        <td><%= request.service_type.name %></td>
+        <td><%= request.service.name %></td>
         <td><%= request.charge %></td>
-        <td><%= link_to 'Show', request %></td>
-        <td><%= link_to 'Edit', edit_request_path(request) %></td>
-        <td><%= link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to edit_request_path(request) do%>
+              <%= image_tag('/images/spacer.gif', :class =>"icon_edit") %>
+          <%end%>
+          <% if (request.status == ApplicationHelper::RequestStatus::New) %>
+          <%= link_to image_tag('/images/spacer.gif', :class =>'icon_delete') , request, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
-</table>
+    </table>
+  </div>
+</section>
 
-<br>
 
 <%= link_to 'New Request', new_request_path %>
+

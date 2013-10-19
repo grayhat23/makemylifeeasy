@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131018155236) do
+ActiveRecord::Schema.define(version: 20131019063856) do
 
   create_table "customers", force: true do |t|
     t.integer  "c_type"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20131018155236) do
     t.datetime "updated_at"
     t.decimal  "budget",          precision: 12, scale: 2
     t.string   "query"
+    t.string   "title"
   end
 
   add_index "requests", ["customer_id"], name: "index_requests_on_customer_id", using: :btree

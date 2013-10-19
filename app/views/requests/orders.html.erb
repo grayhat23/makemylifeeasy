@@ -44,7 +44,7 @@
               <% elsif (request.service_type.s_type == ApplicationHelper::ServiceCategory::Service) %>
                   <%= link_to 'Service', service_path(request, ApplicationHelper::RequestStatus::Serviced), :remote => true %>
               <% end %>
-          <% elsif (request.status == ApplicationHelper::RequestStatus::Serviced) %>
+          <% elsif (request.status == ApplicationHelper::RequestStatus::PickedUp) %>
               <% if (request.service_type.s_type == ApplicationHelper::ServiceCategory::PickupServiceDelivery) %>
                 <%= link_to 'Service', service_path(request, ApplicationHelper::RequestStatus::Serviced), :remote => true %>
               <% elsif (request.service_type.s_type == ApplicationHelper::ServiceCategory::PickupDelivery) %>

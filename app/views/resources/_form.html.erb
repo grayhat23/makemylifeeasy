@@ -1,12 +1,12 @@
 <%= form_tag(resources_path,:method => 'post') %><!--  (:action=>"create", :controller=>"resources") %> -->
 
-    <table>
+    <table class="formFields">
 
      <tr>
 
        <td>First Name </td>
 
-        <td><%=text_field_tag "user[first_name]",@user.first_name %></td>
+        <td><%=text_field_tag "user[first_name]",@user.first_name, :class => "w70per" %></td>
 
       </tr>
 
@@ -14,7 +14,7 @@
 
         <td>Last Name</td>
 
-        <td><%=text_field_tag "user[last_name]",@user.last_name %></td>
+        <td><%=text_field_tag "user[last_name]",@user.last_name, :class => "w70per" %></td>
 
       </tr>
 
@@ -22,7 +22,7 @@
 
         <td>Phone Number</td>
 
-      <td><%=text_field_tag "user[phone_number]",@user.phone_number %> </td>
+      <td><%=text_field_tag "user[phone_number]",@user.phone_number, :class => "w70per" %> </td>
 
      </tr>
 
@@ -30,7 +30,7 @@
 
         <td>Address</td>
 
-        <td><%=text_field_tag "user[address]",@user.address %> </td>
+        <td><%=text_area_tag "user[address]",@user.address, :class => "w70per" %> </td>
 
       </tr>
       <tr> <td>Select the services the resource provides :</td>
