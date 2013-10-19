@@ -5,6 +5,12 @@ class ServiceTypesController < ApplicationController
   # GET /service_types.json
   def index
     @service_types = ServiceType.all
+    @services = Service.all
+    @serviceMap = {}
+    @service_types.each do |i|
+      @serviceMap[i.name] = @services.where("service_type_id=?", i.id)
+    end
+    @request = Request.new
   end
 
   # GET /service_types/1
