@@ -16,7 +16,7 @@
     </td>
   </tr>
   <tr><td>
-  <%= f.label :LastName %></td>
+  <%= f.label 'Last Name' %></td>
     </td>
   <td><%=text_field_tag "user[last_name]",@user.last_name %></td>
     <td>
@@ -60,7 +60,7 @@
     </td>
   </tr>
   <tr><td>
-  <%= f.label :Phone_Number %></td>
+  <%= f.label "Phone Number" %></td>
     <td><%=text_field_tag "user[phone_number]",@user.phone_number %></td>
     <td>
       <% unless @user.errors[:phone_number].blank? %>
