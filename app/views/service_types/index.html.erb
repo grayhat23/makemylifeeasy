@@ -1,29 +1,136 @@
-<h1>Listing service_types</h1>
+<h1>Listing Of Services</h1>
 
+<!-- Main Area -->
+<div id="main_area">
+
+  <!--  <div class="span4" id="carousel-chosen-service-text">-->
+</div>
+<!-- Slider -->
 <table>
   <thead>
-    <tr>
-      <th>Name</th>
-      <th>S type</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
   </thead>
 
   <tbody>
-    <% @service_types.each do |service_type| %>
+  <% @service_types.each do |service_type| %>
       <tr>
-        <td><%= service_type.name %></td>
-        <td><%= service_type.s_type %></td>
-        <td><%= link_to 'Show', service_type %></td>
-        <td><%= link_to 'Edit', edit_service_type_path(service_type) %></td>
-        <td><%= link_to 'Destroy', service_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <div class="row">
+          <div class="span12" id="slider">
+            <!-- Top part of the slider -->
+            <div class="row">
+              <div class="span4" id="carousel-text-<%= service_type.name %>">
+                <h2><%= service_type.name %></h2>
+              </div>
+
+
+              <div style="display: none;" id="slide-content">
+                <% @serviceMap[service_type.name].each do |service| %>
+                    <div id="slide-content-<%= service.name %>">
+                      <h2><%= service.name %></h2>
+                    </div>
+                <% end %>
+              </div>
+            </div>
+
+          </div>
+        </div> <!--/Slider-->
+
+        <div class="row hidden-phone" id="slider-thumbs">
+          <div class="span12">
+            <!-- Bottom switcher of slider -->
+            <ul class="thumbnails">
+              <% @serviceMap[service_type.name].each do |service| %>
+                  <li class="span2">
+                    <a class="thumbnail" id="carousel-selector-<%= service.name %>">
+                      <img src="http://placehold.it/170x100&text=<%= service.name %>" />
+                    </a>
+                  </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
       </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>
 
-<br>
+</div>
 
-<%= link_to 'New Service type', new_service_type_path %>
+<a id="RequestPopup" href="#EnterRequest" data-toggle="modal" style="diplay:none"></a>
+
+
+<div class="modal fade" id="EnterRequest" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <%= form_for(@request) do |f| %>
+          <div class="modal-header">
+            <h4>Enter Request</h4>
+          </div>
+
+          <div class="modal-body">
+
+            <ul>
+              <%= f.label :service_type %><br>
+              <label id="selectedServiceType"></label>
+            </ul>
+            <ul>
+              <%= f.label :service %><br>
+              <label id="selectedService"></label>
+            </ul>
+            <ul>
+              <%= f.label :MaxBudget %><br>
+              <%= f.text_field :charge %>
+            </ul>
+            <!--<div class="actions">
+                <%= f.submit %>
+              </div>-->
+
+            <ul>
+              <label>Service Date</label>
+
+              <div class="input-append"><input type="text" id="servicedate" name=""><span class="add-on"><i class="icon-calendar"></i></span></div>
+            </ul>
+
+            <ul>
+              <label>Service Time</label>
+
+              <div class="input-append"><input type="text" id="servicetime" name=""><span class="add-on"><i class="icon-calendar"></i></span></div>
+            </ul>
+
+          </div>
+
+          <div class="modal-footer">
+            <a class="btn" data-dismiss="modal">Close</a>
+            <a id="btnSave" class="btn btn-primary"><%= f.submit %></a>
+          </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<script>
+    jQuery(document).ready(function($) {
+
+        //$('#carousel-text').html($('#slide-content-0').html());
+
+        //Handles the carousel thumbnails
+        $('[id^=carousel-selector-]').click( function(){
+            var id_selector = $(this).attr("id");
+            //var id = id_selector.substr(id_selector.length -1);
+            var id1 = id_selector.split("-");
+            //alert(id1[1]);
+            //var text = $('#slide-content-' + id1).html();
+
+            $('#RequestPopup').click();
+            //$('#carousel-chosen-service-text').html(text);
+        });
+
+        $('#btnSave').click( function() {
+                }
+        );
+
+    });
+</script>
+
+

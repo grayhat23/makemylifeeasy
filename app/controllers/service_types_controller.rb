@@ -8,6 +8,13 @@ class ServiceTypesController < ApplicationController
     if !user_signed_in?
       redirect_to new_user_session_path
     end
+
+    @services = Service.all
+    @serviceMap = {}
+    @service_types.each do |i|
+      @serviceMap[i.name] = @services.where("service_type_id=?", i.id)
+    end
+    @request = Request.new
   end
 
   # GET /service_types/1

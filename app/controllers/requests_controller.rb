@@ -47,6 +47,12 @@ class RequestsController < ApplicationController
   # POST /requests.json
   def create
     @request = Request.new(request_params)
+    @request.service_id=8
+    @request.service_type_id=2
+    @request.service_type_id=2
+    @request.status=1
+
+    #@request.customer_id=Customer.all.where.('user_id = ?',current_user).id
 
     respond_to do |format|
       if @request.save
