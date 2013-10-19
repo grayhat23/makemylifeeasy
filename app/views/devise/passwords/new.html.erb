@@ -1,12 +1,17 @@
+<div class="span4"></div>
+<div class="span4" style=" background: #dfdfdf; padding: 10px; border-radius: 5px; margin-top: 20px;">
 <h2>Forgot your password?</h2>
 
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
   <%= devise_error_messages! %>
 
   <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+  <%= f.email_field :email, :autofocus => true %></div>            <br/>
+      <br/>
 
-  <div><%= f.submit "Send me reset password instructions" %></div>
+      <input class="btn btn-success" type="submit" value="Send me reset password instructions"/>
 <% end %>
+</div>
+<div class="span4"></div>
 
-<%= render "devise/shared/links" %>
+

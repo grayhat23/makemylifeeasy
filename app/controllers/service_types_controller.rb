@@ -5,6 +5,9 @@ class ServiceTypesController < ApplicationController
   # GET /service_types.json
   def index
     @service_types = ServiceType.all
+    if !user_signed_in?
+      redirect_to new_user_session_path
+    end
   end
 
   # GET /service_types/1

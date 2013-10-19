@@ -1,18 +1,85 @@
+<div class="span4"></div>
+<div class="span4" style=" background: #dfdfdf; padding: 10px; border-radius: 5px; margin-top: 20px;">
+
 <h2>Sign up</h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+  <!--<%= devise_error_messages! %>-->
+  <table>
+  <tr><td>
+  <%= f.label :'First Name' %></td>
+    <td>
+  <%=text_field_tag "user[first_name]",@user.first_name %></td>
+    <td>
+    <% unless @user.errors[:first_name].blank? %>
+    <span>
+      First name should not be blank
+    </span>
+    <% end -%>
+    </td>
+  </tr>
+  <tr><td>
+  <%= f.label 'Last Name' %></td>
+    </td>
+  <td><%=text_field_tag "user[last_name]",@user.last_name %></td>
+    <td>
+    <% unless @user.errors[:last_name].blank? %>
+    <span>
+      Last name should not be blank
+    </span>
+    <% end -%>
+    </td>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
-
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.submit "Sign up" %></div>
+  </tr>
+  <tr>
+    <td><%= f.label :email %></td>
+    <td><%=text_field_tag "user[email]",@user.email %></td>
+    <td>
+    <% unless @user.errors[:email].blank? %>
+    <span>
+      Enter valid Email Address
+    </span>
+    <% end -%>
+    </td>
+  </tr>
+  <tr><td><%= f.label :password %></td>
+    <td><%=password_field_tag "user[password]",@user.password %></td>
+    <td>
+      <% unless @user.errors[:password].blank? %>
+    <span>
+      Password should be of minimum 8 characters
+    </span>
+      <% end -%>
+    </td>
+  </tr>
+  <tr><td><%= f.label :password_confirmation %></td>
+    <td><%=password_field_tag "user[password_confirmation]",@user.password_confirmation %></td>
+    <td>
+      <% unless @user.errors[:password_confirmation].blank? %>
+    <span>
+      Password should match
+    </span>
+      <% end -%>
+    </td>
+  </tr>
+  <tr><td>
+  <%= f.label "Phone Number" %></td>
+    <td><%=text_field_tag "user[phone_number]",@user.phone_number %></td>
+    <td>
+      <% unless @user.errors[:phone_number].blank? %>
+    <span>
+      Enter valid phone number
+    </span>
+      <% end -%>
+    </td>
+  </tr>
+  <tr><td>
+  <%= f.label :Address %></td>
+    <td><%= text_area_tag "user[address]",@user.address , rows: 5, cols: 10 %></td>
+  </tr>
+    <tr></tr>
+    <tr><td></td><td><input class="btn btn-success" type="submit" value="Sign up"/></td></tr>
+  </table>
 <% end %>
 
-<%= render "devise/shared/links" %>
+
