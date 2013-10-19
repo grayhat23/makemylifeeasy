@@ -22,7 +22,7 @@
 
 
                 <div style="display: none;" id="slide-content">
-                  <% @serviceMap[service_type.name].each do |service| %>
+                  <% @serviceMap[service_type.id].each do |service| %>
                       <div id="slide-content-<%= service.name %>">
                         <h2><%= service.name %></h2>
                       </div>
@@ -37,13 +37,12 @@
             <div class="span12">
               <!-- Bottom switcher of slider -->
               <ul class="thumbnails">
-                <% @serviceMap[service_type.name].each do |service| %>
+                <% @serviceMap[service_type.id].each do |service| %>
                     <li class="span2">
-                      <a  id="carousel-selector-<%= service.name %>">
-
-                        <img style="width: 100px !important; height: 100px !important;" src="<%= service.image_url %>" />
-                        <div><%= service.name %></div>
-                      </a>
+                      <%= link_to placerequest_path(service.service_type_id, service.id), :remote => true do %>
+                          <%= image_tag service.image_url, :class => 'service_image' %>
+                          <div><%= service.name %></div>
+                      <% end %>
                     </li>
                 <% end %>
               </ul>
@@ -58,7 +57,7 @@
 
 <a id="RequestPopup" href="#EnterRequest" data-toggle="modal" style="diplay:none"></a>
 
-
+<!--
 <div class="modal fade" id="EnterRequest" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -109,6 +108,7 @@
   </div>
 </div>
 </div>
+-->
 
 
 <script>

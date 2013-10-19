@@ -48,3 +48,9 @@
 #modal :hover, #modal :active {
     color: #000;
 }
+
+.service_image
+{
+    height: 100px !important;
+    width: 100px !important;
+}

@@ -12,7 +12,7 @@ class ServiceTypesController < ApplicationController
     @services = Service.all
     @serviceMap = {}
     @service_types.each do |i|
-      @serviceMap[i.name] = @services.where("service_type_id=?", i.id)
+      @serviceMap[i.id] = @services.where("service_type_id=?", i.id)
     end
     @request = Request.new
   end
@@ -29,6 +29,18 @@ class ServiceTypesController < ApplicationController
 
   # GET /service_types/1/edit
   def edit
+  end
+
+  def placerequest
+     @s_id = params[:s_id]
+     @st_id = params[:st_id]
+
+     @request = Request.new
+     @request.service_id = @s_id
+     @request.service_type_id = @st_id
+
+     @service = Service.find_by_id(@s_id)
+     @service_type = ServiceType.find_by_id(@st_id)
   end
 
   # POST /service_types

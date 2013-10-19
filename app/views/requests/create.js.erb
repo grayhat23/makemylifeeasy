@@ -1,0 +1,11 @@
+<%- if @request.errors.any? %>
+  $('#modal-body').html("<%= j(render :template => 'requests/new.html.erb') %>");
+<%- else %>
+  close_modal();
+  refresh_page();
+<%- end %>
+
+
+
+
+

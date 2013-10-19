@@ -1,0 +1,41 @@
+<%= form_for @request, :remote => true, :validate => true do |f| %>
+    <div class="modal-header">
+      <h4>Enter Request</h4>
+    </div>
+
+    <div class="modal-body">
+
+      <ul>
+        <%= f.label :service_type %><br>
+        <%= label_tag @service_type.name, nil, :class => "w70per" %>
+        <%= f.hidden_field :service_type_id, :value => @service_type.id %>
+      </ul>
+      <ul>
+        <%= f.label :service %><br>
+        <%= label_tag @service.name, nil, :class => "w70per"  %>
+        <%= f.hidden_field :service_id, :value => @service.id %>
+      </ul>
+      <ul>
+        <%= f.label :MaxBudget %><br>
+        <%= f.text_field :charge %>
+      </ul>
+      <!--<div class="actions">
+                <%= f.submit %>
+              </div>-->
+
+      <ul>
+        <label>Service Date</label>
+
+        <div class="input-append"><input type="text" id="servicedate" name=""><span class="add-on"><i class="icon-calendar"></i></span></div>
+      </ul>
+
+      <ul>
+        <label>Service Time</label>
+
+        <div class="input-append"><input type="text" id="servicetime" name=""><span class="add-on"><i class="icon-calendar"></i></span></div>
+      </ul>
+
+    </div>
+
+
+<% end %>

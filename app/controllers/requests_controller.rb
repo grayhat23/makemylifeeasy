@@ -47,16 +47,19 @@ class RequestsController < ApplicationController
   # POST /requests.json
   def create
     @request = Request.new(request_params)
-    @request.service_id=8
-    @request.service_type_id=2
-    @request.service_type_id=2
+
+    @customer = Customer.find_by_user_id(current_user.id)
+
+    @request.customer_id = @customer.id
+
     @request.status=1
 
     #@request.customer_id=Customer.all.where.('user_id = ?',current_user).id
 
     respond_to do |format|
       if @request.save
-        format.html { redirect_to @request, notice: 'Request was successfully created.' }
+        format.html { redirect_to orders_path, notice: 'Request was successfully created.' }
+        format.js { render :js => "close_modal();refresh_page();" }
         format.json { render action: 'show', status: :created, location: @request }
       else
         format.html { render action: 'new' }

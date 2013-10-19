@@ -16,7 +16,7 @@ Makemylifeeasy::Application.routes.draw do
 
   patch 'orders/:id/statusupdate' => 'requests#statusupdate', as: :statusupdate
 
-  get 'requests/:st_id/:s_id/new' => 'requests#new', as: :requests_new
+  get 'service_types/:st_id/:s_id/placerequest' => 'service_types#placerequest', as: :placerequest
 
   resources :requests
 
