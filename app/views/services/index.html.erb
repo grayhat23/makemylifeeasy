@@ -20,9 +20,9 @@
         <td><%= service.image_url %></td>
         <td><%= service.charge %></td>
         <td><%= service.service_type %></td>
-        <td><%= link_to 'Show', service %></td>
+        <td><%= link_to 'Show', services_path %></td>
         <td><%= link_to 'Edit', edit_service_path(service) %></td>
-        <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', services_path , method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
