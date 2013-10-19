@@ -92,54 +92,49 @@
 <div class="modal fade" id="EnterRequest" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
+      <%= form_for(@request) do |f| %>
         <div class="modal-header">
           <h4>Enter Request</h4>
         </div>
+
         <div class="modal-body">
 
-          <%= form_for(@request) do |f| %>
-              <div class="field">
-                <%= f.label :status %><br>
-                <%= f.text_field :status %>
-              </div>
-              <div class="field">
+              <ul>
                 <%= f.label :service_type %><br>
-                <%= f.label :service_type %>
-              </div>
-              <div class="field">
+                <label id="selectedServiceType"></label>
+              </ul>
+              <ul>
                 <%= f.label :service %><br>
-                <%= f.text_field :service %>
-              </div>
-              <div class="field">
-                <%= f.label :resource %><br>
-                <%= f.text_field :resource %>
-              </div>
-              <div class="field">
-                <%= f.label :charge %><br>
+                <label id="selectedService"></label>
+              </ul>
+              <ul>
+                <%= f.label :MaxBudget %><br>
                 <%= f.text_field :charge %>
-              </div>
-              <div class="actions">
+              </ul>
+              <!--<div class="actions">
                 <%= f.submit %>
-              </div>
-          <% end %>
+              </div>-->
 
+                <ul>
+                <label>Service Date</label>
 
+                <div class="input-append"><input type="text" id="servicedate" name=""><span class="add-on"><i class="icon-calendar"></i></span></div>
+                </ul>
 
-          <ul>
-            <label>Service Selected : </label>
+                <ul>
+                <label>Service Time</label>
 
-            <label id="selectedService"></label>
-          </ul>
-          <ul>
-                <label>Date</label>
+                <div class="input-append"><input type="text" id="servicetime" name=""><span class="add-on"><i class="icon-calendar"></i></span></div>
+                </ul>
 
-                <div class="input-append"><input type="text" id="" name=""><span class="add-on"><i class="icon-calendar"></i></span></div>
-          </ul>
         </div>
+
         <div class="modal-footer">
             <a class="btn" data-dismiss="modal">Close</a>
-            <a id="btnSave" class="btn btn-primary">Save</a>
+            <a id="btnSave" class="btn btn-primary"><%= f.submit %></a>
         </div>
+
+      <% end %>
     </div>
   </div>
 </div>
@@ -163,9 +158,9 @@
         });
 
         $('#btnSave').click( function() {
-                    //<%= service_types_path %>;
         }
         );
+
     });
 </script>
 
