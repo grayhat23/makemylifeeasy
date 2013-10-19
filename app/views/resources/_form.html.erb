@@ -1,29 +1,46 @@
-<%= form_for(@resource) do |f| %>
-  <% if @resource.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@resource.errors.count, "error") %> prohibited this resource from being saved:</h2>
+<%= form_tag(resources_path,:method => 'post') %><!--  (:action=>"create", :controller=>"resources") %> -->
 
-      <ul>
-      <% @resource.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <table>
 
-  <div class="field">
-    <%= f.label :user %><br>
-    <%= f.text_field :user %>
-  </div>
-  <div class="field">
-    <%= f.label :r_type %><br>
-    <%= f.number_field :r_type %>
-  </div>
-  <div class="field">
-    <%= f.label :average_rating %><br>
-    <%= f.text_field :average_rating %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+     <tr>
+
+       <td>First Name </td>
+
+        <td><%=text_field_tag "user[first_name]",@user.first_name %></td>
+
+      </tr>
+
+      <tr>
+
+        <td>Last Name</td>
+
+        <td><%=text_field_tag "user[last_name]",@user.last_name %></td>
+
+      </tr>
+
+      <tr>
+
+        <td>Phone Number</td>
+
+      <td><%=text_field_tag "user[phone_number]",@user.phone_number %> </td>
+
+     </tr>
+
+      <tr>
+
+        <td>Address</td>
+
+        <td><%=text_field_tag "user[address]",@user.address %> </td>
+
+      </tr>
+      <tr> <td>Select the services the resource provides :</td>
+
+      <td><%= select_tag "services", grouped_options_for_select(@grouped_options), options = {:multiple => true, :size => 10 }%></td>
+
+      </tr>
+
+
+<td><%= submit_tag nil, :class => "form_submit"%></td>
+
+    </table>
+
